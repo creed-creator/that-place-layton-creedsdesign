@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>That Place — Hair & Beauty · Layton, UT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --rose:#C17B69;
+  --rose-dk:#8C4E3E;
+  --rose-lt:#F0D5CD;
+  --rose-xl:#FAF0EC;
+  --cream:#FDFAF7;
+  --ink:#1C1714;
+  --ink-mid:#2E2520;
+  --muted:#9B8680;
+  --sand:#F5EDE6;
+  --sand-mid:#E8D9D0;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 3rem;
+  transition:background .35s,box-shadow .35s;
+}
+nav.up{background:rgba(253,250,247,.95);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(193,123,105,.12)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:.01em}
+.logo em{font-style:italic;color:var(--rose)}
+.nav-ul{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-ul a{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;opacity:.65;transition:opacity .2s,color .2s}
+.nav-ul a:hover{opacity:1;color:var(--rose)}
+.nav-book{background:var(--ink)!important;color:var(--cream)!important;opacity:1!important;padding:.5rem 1.3rem;border-radius:2px;transition:background .2s!important}
+.nav-book:hover{background:var(--rose-dk)!important}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:301}
+.burger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:all .3s}
+.burger.x span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.burger.x span:nth-child(2){opacity:0}
+.burger.x span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.hero-l{
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 5rem 5rem;
+  background:var(--sand);position:relative;z-index:2;
+}
+.hero-top-img{
+  flex:1;min-height:0;
+  background:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&q=85&fit=crop') center/cover no-repeat;
+  position:relative;
+}
+.hero-top-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(28,23,20,0) 50%,var(--sand) 100%);
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--rose-lt);border-radius:100px;
+  padding:.35rem 1rem;margin-bottom:1.75rem;
+  font-size:.68rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--rose-dk);width:fit-content;
+}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--rose)}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,4.5vw,4.75rem);
+  font-weight:300;line-height:1.08;color:var(--ink);margin-bottom:1.25rem;
+}
+.hero h1 em{font-style:italic;color:var(--rose)}
+.hero-sub{font-size:.95rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:380px;margin-bottom:2.25rem}
+.hero-btns{display:flex;gap:.85rem;flex-wrap:wrap}
+.btn-ink{display:inline-block;background:var(--ink);color:var(--cream);padding:.85rem 2rem;border-radius:2px;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+.btn-ink:hover{background:var(--rose-dk)}
+.btn-ol{display:inline-block;border:1px solid var(--sand-mid);color:var(--ink);padding:.85rem 2rem;border-radius:2px;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:border-color .2s,background .2s}
+.btn-ol:hover{border-color:var(--rose);background:var(--rose-lt)}
+
+/* hero right = photo grid */
+.hero-r{display:grid;grid-template-rows:1fr 1fr;gap:3px;background:var(--ink-mid)}
+.hero-r-top{
+  background:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=85&fit=crop') center/cover no-repeat;
+  position:relative;
+}
+.hero-r-bot{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.hero-r-bot-a{background:url('https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?w=500&q=85&fit=crop') center/cover no-repeat}
+.hero-r-bot-b{background:url('https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=500&q=85&fit=crop') center/cover no-repeat}
+.hero-img-label{
+  position:absolute;bottom:1rem;left:1rem;
+  font-size:.63rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;background:rgba(28,23,20,.45);backdrop-filter:blur(4px);
+  padding:.25rem .75rem;border-radius:100px;
+}
+
+/* ─── TICKER ─── */
+.ticker{background:var(--ink);padding:.9rem 0;overflow:hidden}
+.ticker-track{display:flex;white-space:nowrap;animation:tick 28s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ti{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--rose-lt);padding:0 2.5rem;display:inline-flex;align-items:center;gap:2.5rem}
+.td{width:4px;height:4px;border-radius:50%;background:var(--rose);flex-shrink:0}
+
+/* ─── ABOUT ─── */
+.about{padding:7rem 5rem;background:var(--cream)}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.lbl{display:block;font-size:.63rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);margin-bottom:1rem}
+.sh{font-family:'Cormorant Garamond',serif;font-size:clamp(2.25rem,3.5vw,3.25rem);font-weight:300;line-height:1.12;color:var(--ink);margin-bottom:1.75rem}
+.sh em{font-style:italic;color:var(--rose)}
+.prose{font-size:.95rem;font-weight:300;line-height:1.95;color:#5E4E49}
+
+.about-photo{
+  position:relative;
+  background:url('https://images.unsplash.com/photo-1560066984-138daaa4e4e1?w=800&q=85&fit=crop') center/cover no-repeat;
+  border-radius:4px;
+  min-height:480px;
+}
+.about-photo-badge{
+  position:absolute;bottom:-1.5rem;left:-1.5rem;
+  background:var(--cream);border:1px solid var(--sand-mid);border-radius:6px;
+  padding:1.25rem 1.5rem;box-shadow:0 8px 32px rgba(28,23,20,.1);
+}
+.badge-num{font-family:'Cormorant Garamond',serif;font-size:2.25rem;font-weight:700;color:var(--rose-dk);line-height:1}
+.badge-txt{font-size:.75rem;font-weight:300;color:var(--muted);margin-top:.15rem}
+
+.owner-card{
+  margin-top:3.5rem;background:var(--rose-lt);border-radius:6px;
+  padding:1.5rem;display:flex;align-items:flex-start;gap:1rem;
+  border:1px solid var(--sand-mid);
+}
+.oc-av{
+  width:48px;height:48px;border-radius:50%;background:var(--rose);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#fff;
+}
+.oc-name{font-weight:500;font-size:.9rem;color:var(--rose-dk)}
+.oc-role{font-size:.7rem;font-weight:300;color:var(--muted);margin-bottom:.35rem}
+.oc-q{font-size:.83rem;font-weight:300;line-height:1.7;color:var(--ink);font-style:italic}
+
+/* ─── SERVICES ─── */
+.services{padding:7rem 5rem;background:var(--sand)}
+.svc-inner{max-width:1100px;margin:0 auto}
+.svc-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap}
+
+/* photo + text cards */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;background:var(--sand-mid);border-radius:8px;overflow:hidden}
+.scard{background:var(--cream);display:grid;grid-template-rows:240px auto;transition:background .25s}
+.scard:hover{background:#fff}
+.scard-img{background-size:cover;background-position:center;position:relative}
+.scard-img.nails{background-image:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=85&fit=crop')}
+.scard-img.hair{background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=85&fit=crop')}
+.scard-img.lashes{background-image:url('https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=700&q=85&fit=crop')}
+.scard-img.braids{background-image:url('https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?w=700&q=85&fit=crop')}
+.scard-body{padding:1.75rem 2rem}
+.scard-name{font-size:1rem;font-weight:500;color:var(--ink);margin-bottom:.45rem}
+.scard-desc{font-size:.8rem;font-weight:300;line-height:1.7;color:var(--muted);margin-bottom:1.1rem}
+.scard-list{list-style:none}
+.scard-list li{font-size:.78rem;color:#6B5651;padding:.3rem 0;border-bottom:1px solid var(--sand-mid);display:flex;align-items:center;gap:.5rem}
+.scard-list li:last-child{border-bottom:none}
+.scard-list li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--rose);flex-shrink:0}
+.svc-note{font-size:.75rem;font-weight:300;color:var(--muted);text-align:center;margin-top:1.5rem}
+.svc-note a{color:var(--rose);text-decoration:none}
+
+/* ─── GALLERY FULL BLEED ─── */
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:320px 320px;gap:3px;background:var(--ink-mid)}
+.gp{background-size:cover;background-position:center;position:relative;overflow:hidden}
+.gp:nth-child(1){grid-row:span 2;background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=85&fit=crop')}
+.gp:nth-child(2){background-image:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=85&fit=crop')}
+.gp:nth-child(3){background-image:url('https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=600&q=85&fit=crop')}
+.gp:nth-child(4){background-image:url('https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?w=600&q=85&fit=crop')}
+.gp:nth-child(5){background-image:url('https://images.unsplash.com/photo-1560066984-138daaa4e4e1?w=600&q=85&fit=crop')}
+.gp-tag{
+  position:absolute;bottom:1rem;left:1rem;
+  font-size:.63rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;background:rgba(28,23,20,.5);backdrop-filter:blur(4px);
+  padding:.25rem .8rem;border-radius:100px;
+}
+.gp-overlay{position:absolute;inset:0;background:rgba(28,23,20,0);transition:background .3s}
+.gp:hover .gp-overlay{background:rgba(28,23,20,.15)}
+
+/* ─── REVIEWS ─── */
+.reviews{padding:7rem 5rem;background:var(--cream)}
+.rev-inner{max-width:1100px;margin:0 auto}
+.rev-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap}
+.rev-meta{text-align:right}
+.rev-stars{color:var(--rose);font-size:1.1rem;letter-spacing:.05em;margin-bottom:.3rem}
+.rev-count{font-size:.78rem;font-weight:300;color:var(--muted)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rc{background:var(--sand);border:1px solid var(--sand-mid);border-radius:6px;padding:2rem;transition:border-color .2s,transform .2s}
+.rc:hover{border-color:var(--rose-lt);transform:translateY(-2px)}
+.rc-stars{color:var(--rose);font-size:.9rem;margin-bottom:1rem}
+.rc-body{font-size:.87rem;font-weight:300;line-height:1.85;color:#5E4E49;font-style:italic;margin-bottom:1.5rem}
+.rc-foot{display:flex;align-items:center;gap:.75rem}
+.rc-av{width:34px;height:34px;border-radius:50%;background:var(--rose-lt);border:1px solid var(--sand-mid);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:600;color:var(--rose-dk);flex-shrink:0}
+.rc-name{font-size:.8rem;font-weight:500;color:var(--ink)}
+.rc-src{font-size:.68rem;font-weight:300;color:var(--muted)}
+.rev-cta{text-align:center;margin-top:2.5rem}
+
+/* ─── INFO ─── */
+.info{padding:7rem 5rem;background:var(--sand)}
+.info-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem}
+.ht{width:100%;border-collapse:collapse;margin-top:1.5rem}
+.ht tr{border-bottom:1px solid var(--sand-mid)}
+.ht tr.today-row{background:var(--rose-lt)}
+.ht td{padding:.85rem .5rem;font-size:.9rem}
+.ht td:first-child{color:var(--muted)}
+.ht td:last-child{text-align:right;font-weight:500;color:var(--ink)}
+.ht tr.today-row td:first-child{color:var(--rose-dk);font-weight:500}
+.ht tr.today-row td:last-child{color:var(--rose-dk)}
+.closed{color:var(--muted)!important;font-weight:300!important}
+.ob{display:inline-flex;align-items:center;gap:.35rem;background:#E8F5E9;border:1px solid #A5D6A7;border-radius:100px;padding:2px 9px;font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#2E7D32;margin-left:.5rem;vertical-align:middle}
+.obdot{width:5px;height:5px;border-radius:50%;background:#4CAF50;animation:bk 2s infinite}
+@keyframes bk{0%,100%{opacity:1}50%{opacity:.3}}
+
+.contact-photo{
+  background:url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&q=85&fit=crop') center/cover no-repeat;
+  border-radius:6px;min-height:200px;margin-bottom:1.5rem;position:relative;
+}
+.contact-photo-overlay{
+  position:absolute;inset:0;border-radius:6px;
+  background:linear-gradient(to top,rgba(28,23,20,.7) 0%,transparent 60%);
+  display:flex;align-items:flex-end;padding:1.25rem 1.5rem;
+}
+.contact-photo-txt{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;font-weight:300;color:#fff}
+
+.cbox{background:var(--cream);border:1px solid var(--sand-mid);border-radius:6px;padding:1.5rem;margin-top:1.5rem}
+.crow{display:flex;align-items:center;gap:.85rem;padding:.8rem 0;border-bottom:1px solid var(--sand-mid);text-decoration:none}
+.crow:last-child{border-bottom:none;padding-bottom:0}
+.crow-ic{width:36px;height:36px;border-radius:50%;background:var(--rose-lt);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.crow-lbl{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.crow-val{font-size:.88rem;color:var(--ink)}
+a.crow:hover .crow-val{color:var(--rose)}
+.addr{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;line-height:1.55;color:var(--ink);margin:1.25rem 0 1rem}
+.mapbtn{display:inline-flex;align-items:center;gap:.4rem;background:var(--ink);color:var(--cream);text-decoration:none;padding:.7rem 1.5rem;border-radius:3px;font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:background .2s}
+.mapbtn:hover{background:var(--rose-dk)}
+
+/* ─── CTA ─── */
+.cta{
+  position:relative;overflow:hidden;
+  background:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1600&q=85&fit=crop') center/cover no-repeat;
+  padding:7rem 5rem;text-align:center;display:flex;flex-direction:column;align-items:center;
+}
+.cta::before{content:'';position:absolute;inset:0;background:rgba(28,23,20,.72)}
+.cta *{position:relative;z-index:2}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:1.25rem}
+.cta h2 em{font-style:italic;color:var(--rose-lt)}
+.cta p{font-size:.95rem;font-weight:300;color:rgba(255,255,255,.65);line-height:1.85;max-width:450px;margin-bottom:2.5rem}
+.cta-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn-rose{display:inline-block;background:var(--rose);color:#fff;padding:.9rem 2.25rem;border-radius:2px;font-size:.77rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+.btn-rose:hover{background:var(--rose-dk)}
+.btn-wol{display:inline-block;border:1px solid rgba(255,255,255,.35);color:#fff;padding:.9rem 2.25rem;border-radius:2px;font-size:.77rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:border-color .2s,background .2s}
+.btn-wol:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.08)}
+
+/* ─── FOOTER ─── */
+footer{background:#100D0B;padding:2.5rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.flogo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--rose-lt);text-decoration:none}
+.flogo em{font-style:italic}
+.flinks{display:flex;gap:2rem;flex-wrap:wrap}
+.flinks a{font-size:.68rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:#3A3230;text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--rose-lt)}
+.fcopy{font-size:.65rem;color:#3A3230}
+
+/* ─── MOBILE ─── */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-ul{display:none}
+  .nav-ul.open{display:flex;flex-direction:column;gap:2.5rem;position:fixed;inset:0;background:var(--cream);justify-content:center;align-items:center;z-index:300}
+  .nav-ul.open a{font-size:1.1rem}
+  .burger{display:flex}
+  .hero{grid-template-columns:1fr;grid-template-rows:auto auto}
+  .hero-l{padding:4rem 1.5rem 3rem}
+  .hero-top-img{min-height:220px}
+  .hero-r{min-height:320px}
+  .about,.services,.reviews,.info,.cta{padding:5rem 1.5rem}
+  .about-inner,.info-inner{grid-template-columns:1fr;gap:3rem}
+  .about-photo{min-height:320px}
+  .about-photo-badge{left:.5rem;bottom:-1rem}
+  .svc-grid{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,220px)}
+  .gp:nth-child(1){grid-row:span 1;grid-column:span 2}
+  .rev-grid{grid-template-columns:1fr}
+  .rev-head{flex-direction:column;align-items:flex-start}
+  .rev-meta{text-align:left}
+  footer{flex-direction:column;padding:2rem 1.5rem;align-items:flex-start}
+}
+@media(max-width:480px){
+  .hero-btns,.cta-btns{flex-direction:column}
+  .gallery{grid-template-columns:1fr;grid-template-rows:repeat(5,200px)}
+  .gp:nth-child(1){grid-column:span 1}
+  .hero-r-bot{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="logo" href="#">That <em>Place</em></a>
+  <ul class="nav-ul" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#info">Hours</a></li>
+    <li><a href="tel:8015448100" class="nav-book">Book Now</a></li>
+  </ul>
+  <div class="burger" id="burger" onclick="tog()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- left: stacked — image on top, text below -->
+  <div style="display:grid;grid-template-rows:1fr auto;background:var(--sand);min-height:100vh">
+    <div class="hero-top-img">
+      <span class="hero-img-label">Nails · Hair · Lashes · Braids</span>
+    </div>
+    <div class="hero-l">
+      <div class="hero-tag"><span class="hero-dot"></span>42 N Main St · Layton, UT</div>
+      <h1>Beauty that<br>feels like<br><em>coming home.</em></h1>
+      <p class="hero-sub">Owned by Evy and her talented team — where every client walks out looking stunning and feeling like they just spent time with old friends.</p>
+      <div class="hero-btns">
+        <a href="tel:8015448100" class="btn-ink">Book an Appointment</a>
+        <a href="#services" class="btn-ol">View Services</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- right: photo grid -->
+  <div class="hero-r">
+    <div class="hero-r-top">
+      <span class="hero-img-label">Hair</span>
+    </div>
+    <div class="hero-r-bot">
+      <div class="hero-r-bot-a" style="position:relative"><span class="hero-img-label">Braids</span></div>
+      <div class="hero-r-bot-b" style="position:relative"><span class="hero-img-label">Lashes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ti">Hair Cuts &amp; Color<span class="td"></span></span>
+    <span class="ti">Nail Sets &amp; Art<span class="td"></span></span>
+    <span class="ti">Lash Extensions<span class="td"></span></span>
+    <span class="ti">Braids &amp; Styles<span class="td"></span></span>
+    <span class="ti">Custom Press-Ons<span class="td"></span></span>
+    <span class="ti">Owned by Evy<span class="td"></span></span>
+    <span class="ti">42 N Main · Layton UT<span class="td"></span></span>
+    <span class="ti">98% Recommend<span class="td"></span></span>
+    <span class="ti">Hair Cuts &amp; Color<span class="td"></span></span>
+    <span class="ti">Nail Sets &amp; Art<span class="td"></span></span>
+    <span class="ti">Lash Extensions<span class="td"></span></span>
+    <span class="ti">Braids &amp; Styles<span class="td"></span></span>
+    <span class="ti">Custom Press-Ons<span class="td"></span></span>
+    <span class="ti">Owned by Evy<span class="td"></span></span>
+    <span class="ti">42 N Main · Layton UT<span class="td"></span></span>
+    <span class="ti">98% Recommend<span class="td"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-photo">
+      <div class="about-photo-badge">
+        <div class="badge-num">98%</div>
+        <div class="badge-txt">Recommend on Facebook</div>
+      </div>
+    </div>
+    <div>
+      <span class="lbl">Our Story</span>
+      <h2 class="sh">Not just a salon.<br><em>That Place.</em></h2>
+      <p class="prose">Walk through the door at 42 N Main and you'll feel it instantly — this isn't your average salon. Owned and run by Evy, That Place has become the kind of spot where clients don't just come for great hair or nails. They come back because it genuinely feels like hanging out with longtime friends.</p>
+      <p class="prose" style="margin-top:1.2rem">Whether you're here for a custom nail set, a fresh color, lash extensions, or intricate braids, Evy and the team bring creativity, warmth, and real skill to every service. Personalized consultations come standard — because you deserve results made for you.</p>
+      <div class="owner-card">
+        <div class="oc-av">E</div>
+        <div>
+          <div class="oc-name">Evy — Owner &amp; Stylist</div>
+          <div class="oc-role">That Place · 42 N Main St Suite 2 · Layton, UT 84041</div>
+          <div class="oc-q">"When you're here you feel as if you're hanging out with longtime friends." — A happy client on Facebook</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="svc-inner">
+    <div class="svc-head">
+      <div>
+        <span class="lbl">What We Do</span>
+        <h2 class="sh" style="margin-bottom:0">Everything you need,<br><em>all in one place.</em></h2>
+      </div>
+      <a href="tel:8015448100" class="btn-ink">Call to Book</a>
+    </div>
+    <div class="svc-grid">
+      <div class="scard">
+        <div class="scard-img nails"></div>
+        <div class="scard-body">
+          <div class="scard-name">💅 Nail Services</div>
+          <div class="scard-desc">From everyday elegance to intricate nail art — including Evy's custom press-ons and creative French sets with mood polish twists.</div>
+          <ul class="scard-list">
+            <li>Full Acrylic Set</li>
+            <li>Gel Manicure</li>
+            <li>Dip Powder Nails</li>
+            <li>Custom Nail Art &amp; Press-Ons</li>
+            <li>Fills &amp; Removal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-img hair"></div>
+        <div class="scard-body">
+          <div class="scard-name">✂️ Hair Services</div>
+          <div class="scard-desc">Cuts, color, highlights and styles for every hair type. The team listens carefully and delivers exactly what you want — every time.</div>
+          <ul class="scard-list">
+            <li>Women's Cut &amp; Style</li>
+            <li>Men's &amp; Children's Cuts</li>
+            <li>Color, Highlights &amp; Balayage</li>
+            <li>Blowout &amp; Finish</li>
+            <li>Family-Friendly</li>
+          </ul>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-img lashes"></div>
+        <div class="scard-body">
+          <div class="scard-name">✨ Lash Extensions</div>
+          <div class="scard-desc">Full sets, fills and lifts that open up your eyes and frame your face perfectly. Wake up every morning already gorgeous.</div>
+          <ul class="scard-list">
+            <li>Classic Full Set</li>
+            <li>Volume &amp; Hybrid Sets</li>
+            <li>Lash Fill</li>
+            <li>Lash Lift &amp; Tint</li>
+            <li>Natural to Dramatic Looks</li>
+          </ul>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-img braids"></div>
+        <div class="scard-body">
+          <div class="scard-name">🧵 Braids &amp; Styles</div>
+          <div class="scard-desc">All braid styles welcome. Ask about Tanisha — clients rave about her braiding work by name.</div>
+          <ul class="scard-list">
+            <li>Box Braids</li>
+            <li>Knotless Braids</li>
+            <li>Cornrows &amp; Feed-Ins</li>
+            <li>Straight Backs</li>
+            <li>All Other Styles</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="svc-note">Pricing varies by stylist and service. Call <a href="tel:8015448100">(801) 544-8100</a> or message on <a href="https://www.facebook.com/thatplaceinlayton/" target="_blank">Facebook</a> for a quote and to book your appointment.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery" id="gallery">
+  <div class="gp"><div class="gp-overlay"></div><span class="gp-tag">Hair</span></div>
+  <div class="gp"><div class="gp-overlay"></div><span class="gp-tag">Nails</span></div>
+  <div class="gp"><div class="gp-overlay"></div><span class="gp-tag">Lashes</span></div>
+  <div class="gp"><div class="gp-overlay"></div><span class="gp-tag">Braids</span></div>
+  <div class="gp"><div class="gp-overlay"></div><span class="gp-tag">Salon</span></div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="rev-inner">
+    <div class="rev-head">
+      <div>
+        <span class="lbl">What Clients Say</span>
+        <h2 class="sh" style="margin-bottom:0">People <em>love it here.</em></h2>
+      </div>
+      <div class="rev-meta">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-count">98% recommend · 65+ Facebook reviews</div>
+      </div>
+    </div>
+    <div class="rev-grid">
+      <div class="rc">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-body">This place is AMAZING! Best salon I've ever been to. Nothing like other salons. When you're here you feel as if you're hanging out with longtime friends. Shout out to Tanisha for the great braids. I recommend That Place to everyone.</p>
+        <div class="rc-foot">
+          <div class="rc-av">A</div>
+          <div><div class="rc-name">Happy Client</div><div class="rc-src">Facebook · 5 Stars</div></div>
+        </div>
+      </div>
+      <div class="rc">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-body">Evy and her team are so talented and creative — she suggested a French set for my press-ons and I added a mood polish twist with a green line. Every visit is personalized. I leave feeling like myself, but better.</p>
+        <div class="rc-foot">
+          <div class="rc-av">M</div>
+          <div><div class="rc-name">Regular Client</div><div class="rc-src">Facebook · 5 Stars</div></div>
+        </div>
+      </div>
+      <div class="rc">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-body">The modern decor, vibrant energy, and genuine care make this place one of a kind. Evy and the team take time for personalized consultations and make sure you love what you leave with. My go-to in all of Layton.</p>
+        <div class="rc-foot">
+          <div class="rc-av">K</div>
+          <div><div class="rc-name">Loyal Guest</div><div class="rc-src">Verified Review · 5 Stars</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="rev-cta">
+      <a href="https://www.facebook.com/thatplaceinlayton/" target="_blank" class="btn-ol">See All Reviews on Facebook →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & CONTACT -->
+<section class="info" id="info">
+  <div class="info-inner">
+    <div>
+      <span class="lbl">Hours</span>
+      <h2 class="sh" style="font-size:2.2rem">Open<br><em>Mon – Sat</em></h2>
+      <table class="ht" id="ht">
+        <tr data-d="1"><td>Monday</td><td>11:00 AM – 7:00 PM</td></tr>
+        <tr data-d="2"><td>Tuesday</td><td>11:00 AM – 7:00 PM</td></tr>
+        <tr data-d="3"><td>Wednesday</td><td>11:00 AM – 7:00 PM</td></tr>
+        <tr data-d="4"><td>Thursday</td><td>11:00 AM – 7:00 PM</td></tr>
+        <tr data-d="5"><td>Friday</td><td>11:00 AM – 7:00 PM</td></tr>
+        <tr data-d="6"><td>Saturday</td><td>11:00 AM – 7:00 PM</td></tr>
+        <tr data-d="0"><td>Sunday</td><td class="closed">Closed</td></tr>
+      </table>
+      <p style="font-size:.74rem;font-weight:300;color:var(--muted);margin-top:1rem">Walk-ins welcome. Appointments preferred for lashes &amp; braids.<br>Follow on <a href="https://www.facebook.com/thatplaceinlayton/" target="_blank" style="color:var(--rose);text-decoration:none">Facebook</a> for updates &amp; holiday hours.</p>
+    </div>
+    <div>
+      <span class="lbl">Find Us</span>
+      <h2 class="sh" style="font-size:2.2rem">Visit the<br><em>Salon</em></h2>
+      <div class="contact-photo">
+        <div class="contact-photo-overlay">
+          <div class="contact-photo-txt">42 N Main Street, Layton</div>
+        </div>
+      </div>
+      <div class="addr">42 N Main Street<br>Suite 2, Layton, UT 84041</div>
+      <a href="https://www.google.com/maps/search/42+N+Main+Street+Suite+2+Layton+UT+84041" target="_blank" class="mapbtn">↗ Get Directions</a>
+      <div class="cbox">
+        <a href="tel:8015448100" class="crow">
+          <div class="crow-ic">📞</div>
+          <div><div class="crow-lbl">Phone</div><div class="crow-val">(801) 544-8100</div></div>
+        </a>
+        <a href="mailto:thatplacesalon@gmail.com" class="crow">
+          <div class="crow-ic">✉️</div>
+          <div><div class="crow-lbl">Email</div><div class="crow-val">thatplacesalon@gmail.com</div></div>
+        </a>
+        <a href="https://www.facebook.com/thatplaceinlayton/" target="_blank" class="crow">
+          <div class="crow-ic" style="font-weight:700;font-size:.9rem;color:var(--rose-dk)">f</div>
+          <div><div class="crow-lbl">Facebook</div><div class="crow-val">@thatplaceinlayton</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to feel<br><em>absolutely you?</em></h2>
+  <p>Walk-ins welcome. Appointments preferred — especially for lashes and braids. Call or message Evy and the team to book your next visit.</p>
+  <div class="cta-btns">
+    <a href="tel:8015448100" class="btn-rose">Call (801) 544-8100</a>
+    <a href="https://www.facebook.com/thatplaceinlayton/" target="_blank" class="btn-wol">Message on Facebook</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="flogo">That <em>Place</em></a>
+  <div class="flinks">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#info">Hours</a>
+    <a href="https://www.facebook.com/thatplaceinlayton/" target="_blank">Facebook</a>
+  </div>
+  <div class="fcopy">© 2026 That Place · 42 N Main St Suite 2, Layton UT 84041</div>
+</footer>
+
+<script>
+// Scroll nav
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('up', window.scrollY>60);
+});
+
+// Mobile menu
+function tog(){
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('burger').classList.toggle('x');
+}
+document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('burger').classList.remove('x');
+}));
+
+// Today's hours
+const d = new Date().getDay();
+const r = document.querySelector(`tr[data-d="${d}"]`);
+if(r){
+  r.classList.add('today-row');
+  const c = r.querySelector('td');
+  if(c && d!==0){
+    const b = document.createElement('span');
+    b.className='ob';
+    b.innerHTML='<span class="obdot"></span>Today';
+    c.appendChild(b);
+  }
+}
+</script>
+</body>
+</html>
